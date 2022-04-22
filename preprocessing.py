@@ -76,8 +76,8 @@ def preprocess_df(data, verbose=True):
     df_old = df[df["host_since"] < filter_date]
     df_new = df[df["host_since"] >= filter_date]
 
-    # For old hosts: check if their reviews per month >0.15(~ 25th percentile);else deem them inactive
-    df_old["active"] = [1 if i >= 0.15 else 0 for i in df_old["reviews_per_month"]]
+    # Old hosts defined as 25> percentile
+    df_old["active"] = [1 if i >= 0.09 else 0 for i in df_old["reviews_per_month"]]
     df_new.loc[:, "active"] = 1
     # Get the active ones from df_old
     df_old = df_old[df_old["active"] == 1]
@@ -135,7 +135,7 @@ def preprocess_df(data, verbose=True):
     #         )
     #     )
 
-    # df["price_log"] = df["price"].apply(np.log)
+    df["price_log"] = df["price"].apply(np.log)
 
     # if verbose:
     #     print(
@@ -162,10 +162,7 @@ def preprocess_df(data, verbose=True):
         df[column] = df[column].clip(upper=value_cutoff)  # cap values above the cutoff
 
     ## Encoding
-    # Host as binary numbers 0, 1
-    df = df[
-        ~(df["host_identity_verified"] == "0")
-    ]  # remove 5 records where there is no information about all 3 of this
+    df = df[~(df["host_identity_verified"] == "0")]
     encode = {"t": 1, "f": 0}
     df = df.replace(
         {
