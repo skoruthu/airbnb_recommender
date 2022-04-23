@@ -6,7 +6,7 @@ import ast
 
 
 def preprocess_df(data):
-
+    ## Preprocess a standard Airbnb dataset
     df = data.copy()
 
     ########################################################################
@@ -40,8 +40,8 @@ def preprocess_df(data):
         "license",
         "host_url",
     ]
-    all_0 = ["calendar_updated", "bathrooms"]
-    duplicated = ["host_neighbourhood", "neighbourhood", "host_listings_count"]
+    empty = ["calendar_updated", "bathrooms"]
+    dup = ["host_neighbourhood", "neighbourhood", "host_listings_count"]
     not_useful = [
         "minimum_minimum_nights",
         "maximum_minimum_nights",
@@ -59,12 +59,11 @@ def preprocess_df(data):
         "calculated_host_listings_count_entire_homes",
     ]
 
-    df = df.drop(not_relevant + all_0 + duplicated + not_useful, axis=1)
+    df = df.drop(not_relevant + empty + dup + not_useful, axis=1)
 
     ########################################################################
 
     ## Remove inactive listings
-    # create temp column to store active status
     df["active"] = np.nan
 
     # Find those who joined before 5/12/20 (i.e. 1 year before the data scraped date)
@@ -98,6 +97,9 @@ def preprocess_df(data):
     )  # extract half-bath as 0.5
     df["bathroom_num"] = df["bathroom_num"].astype("float")
     df["bathroom_sharing"] = df["bathrooms_text"].str.extract(pat=r"(shared|private)")
+
+    col_to_drop = ["bathrooms_text"]
+    df = df.drop(col_to_drop, axis=1)
 
     ########################################################################
     ## Imputation
@@ -147,13 +149,6 @@ def preprocess_df(data):
             "instant_bookable": encode,
         }
     )
-
-    ########################################################################
-
-    ## Drop columns
-    preprocessing_cols = ["bathrooms_text"]
-
-    df = df.drop(preprocessing_cols, axis=1)
 
     return df
 
