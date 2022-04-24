@@ -6,7 +6,7 @@ AirBnB Dataset Recommendation
 <strong> Description: </strong><br>
 This notebook does sentiment analysis of the listing reviews files.
 The input is the reviews which were pre-processed with VADER to do lemmatization without cleaning.
-The sentiment analysis done was polarity scores of the reviews, which are then grouped into either Positive, Negative or Neutral sentiments. Reviews which were not in English were dropped.<br><br>
+The sentiment analysis done was polarity scores of the reviews, which are then grouped into either Positive, Negative or Neutral sentiments. Reviews which were not in English were dropped.<br>
 
 <strong> File Name: </strong>london_nearest_tube.ipynb <br>
 <strong> Packages used:</strong> pandas, numpy, geopy <br>
