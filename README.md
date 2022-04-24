@@ -1,5 +1,5 @@
-# bt5153_gp
-AirBnB Dataset Recommendation
+# BT5153 Group Project (Group 9) - Airbnb Smart Scan
+This is the Github repository for Group 9 Final Project for BT5153 Class Semester 2 2022.
 
 <strong> File Name: </strong> sentiment_analysis.ipynb <br>
 <strong> Packages used:</strong> VADER, texthero, nltk, pandarallel, pandas, numpy <br>
