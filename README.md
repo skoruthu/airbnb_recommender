@@ -31,3 +31,13 @@ This file contains functions to preprocess dataframes, which included drop unuse
 <strong> Packages used:</strong> pandas, seaborn, numpy, matplotlib <br>
 <strong> Description: </strong><br>
 This file contains some of the graphs used in the report. <br><br>
+
+<strong> File Name: </strong>models.ipynb <br>
+<strong> Packages used:</strong> pandas, seaborn, numpy, matplotlib, sklearn, lightgbm, xgboost, miceforest, keras, shap, tensorflow <br>
+<strong> Description: </strong><br>
+This file contains all of the regression models and some EDA.
+Prior to training and running the models, the following steps were implemented:
+(1) Merging all data (sentiments, listings, engineered features and location data)
+(2) Data preprocessing steps, including MICE imputation, feature selection, one hot key encoding, scaling and more.
+Models run and tuned were: LightGBM, XGBoost, Simple OLS, Random Forest and Stacked Regressors.
+<br><br>
