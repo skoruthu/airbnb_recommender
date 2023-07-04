@@ -44,3 +44,10 @@ Merge listings dataset with London stations dataset so that for each listing, th
 This notebook does sentiment analysis of the listing reviews files.<br>
 The input is the reviews which were pre-processed with VADER to do lemmatization without cleaning.<br>
 The sentiment analysis done was polarity scores of the reviews, which are then grouped into either Positive, Negative or Neutral sentiments. Reviews which were not in English were dropped.<br>
+
+#### Collaborators
+
+Susan Koruthu <br />
+Gino Sy Tiu <br />
+Felipe Chapa <br />
+Widya Salim
